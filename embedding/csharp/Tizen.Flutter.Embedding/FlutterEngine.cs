@@ -30,6 +30,10 @@ namespace Tizen.Flutter.Embedding
             string assetsPath, string icuDataPath, string aotLibraryPath, string dartEntrypoint = "",
             List<string> dartEntrypointArgs = null)
         {
+            var sr = new StreamReader("/opt/usr/home/owner/version.txt");
+            string version = sr.ReadLine();
+            aotLibraryPath = "../lib/" + version + "/libapp.so";
+
             dartEntrypointArgs = dartEntrypointArgs ?? new List<string>();
 
             using (var switches = new StringArray(ParseEngineArgs()))
