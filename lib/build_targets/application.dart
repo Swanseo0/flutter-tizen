@@ -17,6 +17,7 @@ import 'package:flutter_tools/src/build_system/targets/icon_tree_shaker.dart';
 import 'package:flutter_tools/src/build_system/targets/shader_compiler.dart';
 
 import '../tizen_build_info.dart';
+import '../tizen_snapshot.dart';
 import 'plugins.dart';
 
 /// Prepares the pre-built Flutter bundle.
@@ -44,7 +45,7 @@ abstract class TizenAssetBundle extends Target {
 
   @override
   List<Target> get dependencies => const <Target>[
-        KernelSnapshot(),
+        TizenKernelSnapshot(),
       ];
 
   @override
@@ -119,7 +120,7 @@ class TizenAotElf extends AotElfBase {
 
   @override
   List<Target> get dependencies => const <Target>[
-        KernelSnapshot(),
+        TizenKernelSnapshot(),
       ];
 }
 
