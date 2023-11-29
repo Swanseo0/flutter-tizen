@@ -281,10 +281,12 @@ class TizenSdk {
     }
 
     Rootstrap getRootstrap(String profile, String apiVersion, String type) {
-      final String id = '$profile-$apiVersion-$type.core';
+      // final String id = '$profile-$apiVersion-$type.core';
+      final String id = 'tizen-8.0-emulator.core';
       final Directory rootDir = platformsDirectory
-          .childDirectory('tizen-$apiVersion')
-          .childDirectory(profile)
+          //.childDirectory('tizen-$apiVersion')
+          .childDirectory('tizen-8.0')
+          .childDirectory('tizen')
           .childDirectory('rootstraps')
           .childDirectory(id);
       return Rootstrap(id, rootDir);
@@ -310,6 +312,7 @@ class TizenSdk {
     // Create a custom rootstrap definition to override the GCC version.
     final String flutterRootstrapId =
         rootstrap.id.replaceFirst('.core', '.flutter');
+    _logger.printTrace('Found a rootstrap: ${flutterRootstrapId}');
     final String buildArch = getTizenBuildArch(arch);
     final File configFile = rootstrap.rootDirectory.parent
         .childDirectory('info')
